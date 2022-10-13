@@ -28,7 +28,8 @@ public class RecipeBook extends recipe{
 
     //Welcome user and let them know what actions they can take as of right now
     System.out.println("\nWelcome to Team Purple's Recipe Book! \n===================================");
-    System.out.println("Do you wish to: \n1. 'R'ead through all recipes,\n2. 'A'dd a new recipe,\n3. 'S'earch through the existing cookbook,\n4. 'Q'uit the program?");
+    System.out.println("If you're new or want a refresh on what each action below does, visit our User Wiki Guide!\nhttps://teampurple-recipe-book.atlassian.net/wiki/spaces/DH/overview");
+    System.out.println("\n\nDo you wish to: \n1. 'R'ead through all recipes,\n2. 'A'dd a new recipe,\n3. 'S'earch through the existing cookbook,\n4. 'Q'uit the program?");
     System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
     String userInput = "";
     do {
@@ -53,30 +54,31 @@ public class RecipeBook extends recipe{
           }
         }
         if (recipeIndex == -1) break;
-        System.out.println(book.get(recipeIndex).title);
+        System.out.println("\nRecipe for: " + book.get(recipeIndex).title);
         System.out.println("Description: " + book.get(recipeIndex).description + "\n");
-        System.out.println("Ingredients: \n");
+        System.out.println("Ingredients: ");
           for(int q = 0; q < book.get(recipeIndex).ingredients.length; q++){
-              System.out.println(book.get(recipeIndex).ingredients[q]);
+              System.out.println("- " + book.get(recipeIndex).ingredients[q]);
           }
           System.out.println("\nPress enter to see the next step. Or type 'All' to see all of the steps");
           String stepsuser = "";
           for(int w = 0; w < book.get(recipeIndex).steps.length; w++){
-              stepsuser = inputFromUser.nextLine();    
+              stepsuser = inputFromUser.nextLine();
               if (stepsuser.equalsIgnoreCase("all")){
                 for(int a = w; a < book.get(recipeIndex).steps.length; a++){
-                  System.out.println(book.get(recipeIndex).steps[a]);
+                  System.out.println((a + 1) + ". " + book.get(recipeIndex).steps[a]);
                 }
                 break;
               }
               else
-                System.out.println(book.get(recipeIndex).steps[w]);
-            
+                System.out.println((w + 1) + ". " + book.get(recipeIndex).steps[w]);
+
           }
         }
+        System.out.println("\n===================================");
         System.out.println("Do you wish to: \n1. 'R'ead through all recipes,\n2. 'A'dd a new recipe,\n3. 'S'earch through the existing cookbook,\n4. 'Q'uit the program?");
         System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
-        
+
 // Code for adding Recipes
       }
       else if (userInput.equalsIgnoreCase("a")) {
@@ -92,7 +94,7 @@ public class RecipeBook extends recipe{
         System.out.println("Your recipe has " + numIng + " ingredients");
         String[] recipeIng = new String[numIng];
         int ingredientcount = 0;
-          while(ingredientcount != numIng){ 
+          while(ingredientcount != numIng){
           System.out.println("Please enter the next Ingredient");
           nextIng = readInput.nextLine();
           recipeIng[ingredientcount] = nextIng;
@@ -104,14 +106,17 @@ public class RecipeBook extends recipe{
         String nextStep = "";
         String[] recipeSteps = new String[numSteps];
         int stepcount = 0;
-          while(stepcount != numSteps){ 
+          while(stepcount != numSteps){
           System.out.println("Please enter the next Step");
           nextStep = readInput.nextLine();
           recipeSteps[stepcount] = nextStep;
           stepcount++;
         }
         book.add(new recipe(recipeTitle, recipeDesc, recipeIng, recipeSteps));
+        System.out.println("Successfully added your recipe!\n");
+        System.out.println("===================================");
         System.out.println("Do you wish to: \n1. 'R'ead through all recipes,\n2. 'A'dd a new recipe,\n3. 'S'earch through the existing cookbook,\n4. 'Q'uit the program?");
+        System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
       }
       else if (userInput.equalsIgnoreCase("s")) {
 //Code for Search Function
@@ -141,7 +146,7 @@ public class RecipeBook extends recipe{
                   recipeIndex = i;
                   break;
                 }
-              
+
             }
             for (String step : book.get(i).steps){
               for (String word : step.split(" ")){
@@ -154,27 +159,28 @@ public class RecipeBook extends recipe{
           }
         }
         if (recipeIndex == -1) break;
-        System.out.println(book.get(recipeIndex).title);
+        System.out.println("\nRecipe for: " + book.get(recipeIndex).title);
         System.out.println("Description: " + book.get(recipeIndex).description + "\n");
         System.out.println("Ingredients: \n");
           for(int q = 0; q < book.get(recipeIndex).ingredients.length; q++){
-              System.out.println(book.get(recipeIndex).ingredients[q]);
+              System.out.println("- " + book.get(recipeIndex).ingredients[q]);
           }
           System.out.println("\nPress enter to see the next step. Or type 'All' to see all of the steps");
           String stepsuser = "";
           for(int w = 0; w < book.get(recipeIndex).steps.length; w++){
-              stepsuser = inputFromUser.nextLine();    
+              stepsuser = inputFromUser.nextLine();
               if (stepsuser.equalsIgnoreCase("all")){
                 for(int a = w; a < book.get(recipeIndex).steps.length; a++){
-                  System.out.println(book.get(recipeIndex).steps[a]);
+                  System.out.println((a + 1) + ". " + book.get(recipeIndex).steps[a]);
                 }
                 break;
               }
               else
-                System.out.println(book.get(recipeIndex).steps[w]);
-            
+                System.out.println((w + 1) + ". " + book.get(recipeIndex).steps[w]);
+
           }
         }
+        System.out.println("\n===================================");
         System.out.println("Do you wish to: \n1. 'R'ead through all recipes,\n2. 'A'dd a new recipe,\n3. 'S'earch through the existing cookbook,\n4. 'Q'uit the program?");
         System.out.print("\nEnter 'r', 'a', 's', or 'q' here: ");
       }
